@@ -12,7 +12,7 @@ import { AccessTokenDto } from '@modules/auth/dto/access-token.dto';
 import { LocalAuthGuard } from '@modules/auth/guards/local-auth.guard';
 import { LoginDto } from '@modules/auth/dto/login.dto';
 
-@ApiTags('auth')
+@ApiTags('Auth')
 @Controller('/v1/auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name);
