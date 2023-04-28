@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: session-manager-postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=session-manager
+      - POSTGRES_USER=session-manager
+      - POSTGRES_PASSWORD=session-manager
+    ports:
+      - '5480:5432'
+    volumes:
+      - pg-data:/data/
+    networks:
+      - postgres
+
+  redis:
+    image: redis:alpine
+    container_name: session-manager-redis
+    restart: on-failure
+    networks:
+      - app
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_USE_TLS: "false"
+      REDIS_DB: 0
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  pg-data:
+  redis-data:
+
+networks:
+  app:
+    driver: bridge
+  postgres:
+    driver: bridge
