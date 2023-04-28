@@ -27,7 +27,7 @@ Visit http://localhost:3000/docs
 ## Testing
 For testing you can do next steps.
 
-Update session timeouts:
+Update session timeouts in `.env`:
 ```bash
 SESSION_ACTIVITY_TTL=60000 # 1 minute
 SESSION_BLOCK_TTL=5000 # 5 seconds
